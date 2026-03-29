@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Bank CAM Platform</title>
+    <link rel="stylesheet" th:href="@{/css/landing.css}">
+</head>
+<body>
+<div class="app-shell" id="appShell">
+    <header class="top-header">
+        <img th:src="@{/images/indian-bank-logo.svg}" src="/images/indian-bank-logo.svg" alt="Indian Bank Logo">
+        <span>AI-powered CAM Platform</span>
+    </header>
+
+    <main class="screen-stack">
+        <section class="screen is-active" id="landingScreen" aria-label="Landing">
+            <div class="bg-network" aria-hidden="true"></div>
+            <div class="content-wrap">
+                <h1>Reimagining Credit Appraisal with AI</h1>
+                <p>From data ingestion to decision-ready CAMs — faster, smarter, consistent.</p>
+                <div class="feature-pills">
+                    <span>Seamless Data Ingestion</span>
+                    <span>AI Risk Analysis</span>
+                    <span>Auto CAM Drafting</span>
+                    <span>Decision Intelligence</span>
+                    <span>Workflow Governance</span>
+                </div>
+                <button class="primary-btn" id="toLoginBtn">Take me to Login</button>
+            </div>
+        </section>
+
+        <section class="screen" id="loginScreen" aria-label="Login">
+            <div class="bg-particles" aria-hidden="true"></div>
+            <form class="login-card" id="loginForm">
+                <h2>Secure Sign-in</h2>
+                <p class="helper">Use your credentials to continue to CAM workspace.</p>
+
+                <label for="userId">User ID</label>
+                <input id="userId" name="userId" type="text" placeholder="Enter User ID" autocomplete="username">
+
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter Password" autocomplete="current-password">
+
+                <button type="submit" class="primary-btn">Login</button>
+                <button type="button" class="secondary-btn" id="ssoBtn">Login with SSO</button>
+
+                <div class="loader" id="ssoLoader" hidden>
+                    <span></span><span></span><span></span>
+                    <p>Redirecting to enterprise SSO...</p>
+                </div>
+            </form>
+        </section>
+
+        <section class="screen" id="welcomeScreen" aria-label="Welcome">
+            <div class="bg-network faint" aria-hidden="true"></div>
+            <div class="welcome-card">
+                <div class="checkmark">✓</div>
+                <h2 id="welcomeHeading">Welcome, User</h2>
+                <p>Role: Credit Officer</p>
+                <button class="primary-btn" id="proceedBtn">Proceed</button>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script th:src="@{/js/landing.js}"></script>
+</body>
+</html>
