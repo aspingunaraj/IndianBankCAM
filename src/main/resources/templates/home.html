@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Bank CAM Portal | Home</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<div th:replace="~{fragments/header :: brandHeader}"></div>
+<main class="portal-shell single-panel">
+    <section class="welcome-card">
+        <p class="eyebrow">Signed in</p>
+        <h1>Welcome to AI-assisted CAM Workspace</h1>
+        <p>You are signed in as <strong th:text="${userId}">user</strong>. You are now inside the Phase-1 portal shell. Next we can add borrower profile intake and CAM drafting workflow.</p>
+        <a class="secondary-link" th:href="@{/login}">Sign out</a>
+    </section>
+</main>
+</body>
+</html>
