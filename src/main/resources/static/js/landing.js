@@ -22,7 +22,7 @@ function titleFor(screenKey) {
     camSelection: 'Create New CAM',
     newToBank: 'New to Bank Intake',
     dataLoading: 'Company Data Aggregation',
-    dataReveal: 'Company Intelligence View',
+    dataReveal: 'Company Data & Documents',
   };
   return titles[screenKey] || 'Credit Appraisal Dashboard';
 }
