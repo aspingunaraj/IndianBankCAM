@@ -1,57 +1,47 @@
-const root = document.getElementById('landingRoot');
-const stage = document.getElementById('featureStage');
-const cards = Array.from(document.querySelectorAll('.feature-card'));
-const dotsWrap = document.getElementById('carouselDots');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+const screens = {
+  landing: document.getElementById('landingScreen'),
+  login: document.getElementById('loginScreen'),
+  welcome: document.getElementById('welcomeScreen'),
+};
 
-let index = 0;
-let timer;
+const toLoginBtn = document.getElementById('toLoginBtn');
+const loginForm = document.getElementById('loginForm');
+const ssoBtn = document.getElementById('ssoBtn');
+const ssoLoader = document.getElementById('ssoLoader');
+const welcomeHeading = document.getElementById('welcomeHeading');
+const proceedBtn = document.getElementById('proceedBtn');
+const userIdInput = document.getElementById('userId');
 
-function setActive(nextIndex) {
-  index = (nextIndex + cards.length) % cards.length;
-  cards.forEach((card, i) => card.classList.toggle('active', i === index));
-  Array.from(dotsWrap.children).forEach((dot, i) => {
-    dot.classList.toggle('active', i === index);
-    dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
-  });
+function transitionTo(target) {
+  Object.values(screens).forEach((screen) => screen.classList.remove('is-active'));
+  screens[target].classList.add('is-active');
 }
 
-function startAutoRotate() {
-  clearInterval(timer);
-  timer = setInterval(() => setActive(index + 1), 2600);
+function showWelcome(userId) {
+  const safeName = userId && userId.trim() ? userId.trim() : 'User';
+  welcomeHeading.textContent = `Welcome, ${safeName}`;
+  setTimeout(() => transitionTo('welcome'), 360);
 }
 
-cards.forEach((_, i) => {
-  const dot = document.createElement('button');
-  dot.className = 'dot';
-  dot.type = 'button';
-  dot.setAttribute('aria-label', `Go to feature ${i + 1}`);
-  dot.setAttribute('role', 'tab');
-  dot.addEventListener('click', () => {
-    setActive(i);
-    startAutoRotate();
-  });
-  dotsWrap.appendChild(dot);
+toLoginBtn.addEventListener('click', () => transitionTo('login'));
+
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  loginForm.style.opacity = '0.94';
+  loginForm.style.transform = 'translateY(-3px)';
+  showWelcome(userIdInput.value);
 });
 
-prevBtn.addEventListener('click', () => {
-  setActive(index - 1);
-  startAutoRotate();
+ssoBtn.addEventListener('click', () => {
+  ssoLoader.hidden = false;
+  ssoBtn.disabled = true;
+  setTimeout(() => {
+    ssoLoader.hidden = true;
+    ssoBtn.disabled = false;
+    showWelcome(userIdInput.value);
+  }, 2400);
 });
 
-nextBtn.addEventListener('click', () => {
-  setActive(index + 1);
-  startAutoRotate();
-});
-
-setActive(0);
-window.setTimeout(() => {
-  root.classList.add('show-features');
-  stage.setAttribute('aria-hidden', 'false');
-  startAutoRotate();
-}, 5200);
-
-window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', () => {
-  clearInterval(timer);
+proceedBtn.addEventListener('click', () => {
+  console.log('Proceed to dashboard placeholder');
 });

@@ -6,8 +6,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -18,44 +16,30 @@ class LoginControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void shouldRenderLandingPage() throws Exception {
+    void shouldRenderLandingAtRoot() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("landing"));
     }
 
     @Test
-    void shouldRenderLoginPage() throws Exception {
+    void shouldRenderLandingAtLoginRoute() throws Exception {
         mockMvc.perform(get("/login"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("login"));
+                .andExpect(view().name("landing"));
     }
 
     @Test
-    void shouldRejectBlankCredentials() throws Exception {
-        mockMvc.perform(post("/login")
-                        .param("userId", "")
-                        .param("password", ""))
-                .andExpect(status().isOk())
-                .andExpect(view().name("login"))
-                .andExpect(model().attributeExists("errorMessage"));
-    }
-
-    @Test
-    void shouldAllowValidCredentialsToHome() throws Exception {
-        mockMvc.perform(post("/login")
-                        .param("userId", "cam.user")
-                        .param("password", "demoPassword"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("home"))
-                .andExpect(model().attributeExists("userId"));
-    }
-
-    @Test
-    void shouldOfferSsoFlow() throws Exception {
+    void shouldRenderLandingForSsoRoute() throws Exception {
         mockMvc.perform(get("/sso/login"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("login"))
-                .andExpect(model().attributeExists("successMessage"));
+                .andExpect(view().name("landing"));
+    }
+
+    @Test
+    void shouldRenderLandingForWelcomeRoute() throws Exception {
+        mockMvc.perform(get("/welcome"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("landing"));
     }
 }

@@ -3,79 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indian Bank CAM Platform | AI Intro</title>
+    <title>Indian Bank CAM Platform</title>
     <link rel="stylesheet" th:href="@{/css/landing.css}">
 </head>
 <body>
-<div class="landing-root" id="landingRoot">
-    <div th:replace="~{fragments/header :: brandHeader}"></div>
+<div class="app-shell" id="appShell">
+    <header class="top-header">
+        <img th:src="@{/images/indian-bank-logo.svg}" src="/images/indian-bank-logo.svg" alt="Indian Bank Logo">
+        <span>AI-powered CAM Platform</span>
+    </header>
 
-    <section class="intro-sequence" aria-live="polite">
-        <div class="network-bg" aria-hidden="true">
-            <span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span>
-            <span class="link"></span><span class="link"></span><span class="link"></span>
-        </div>
+    <main class="screen-stack">
+        <section class="screen is-active" id="landingScreen" aria-label="Landing">
+            <div class="bg-network" aria-hidden="true"></div>
+            <div class="content-wrap">
+                <h1>Reimagining Credit Appraisal with AI</h1>
+                <p>From data ingestion to decision-ready CAMs — faster, smarter, consistent.</p>
+                <div class="feature-pills">
+                    <span>Seamless Data Ingestion</span>
+                    <span>AI Risk Analysis</span>
+                    <span>Auto CAM Drafting</span>
+                    <span>Decision Intelligence</span>
+                    <span>Workflow Governance</span>
+                </div>
+                <button class="primary-btn" id="toLoginBtn">Take me to Login</button>
+            </div>
+        </section>
 
-        <div class="ai-orb" aria-hidden="true">
-            <span class="ring ring-1"></span>
-            <span class="ring ring-2"></span>
-            <span class="core"></span>
-            <span class="doc doc-1"></span>
-            <span class="doc doc-2"></span>
-            <span class="doc doc-3"></span>
-        </div>
+        <section class="screen" id="loginScreen" aria-label="Login">
+            <div class="bg-particles" aria-hidden="true"></div>
+            <form class="login-card" id="loginForm">
+                <h2>Secure Sign-in</h2>
+                <p class="helper">Use your credentials to continue to CAM workspace.</p>
 
-        <div class="headline-wrap">
-            <h1>Reimagining Credit Appraisal with AI</h1>
-            <p>From data ingestion to decision-ready CAMs — faster, smarter, consistent</p>
-        </div>
-    </section>
+                <label for="userId">User ID</label>
+                <input id="userId" name="userId" type="text" placeholder="Enter User ID" autocomplete="username">
 
-    <section class="feature-stage" id="featureStage" aria-label="Platform capabilities">
-        <div class="feature-header">
-            <p class="kicker">Platform Capabilities</p>
-            <h2>Enterprise intelligence for CAM lifecycle</h2>
-        </div>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter Password" autocomplete="current-password">
 
-        <div class="carousel" id="featureCarousel">
-            <button class="nav nav-prev" id="prevBtn" aria-label="Previous feature">‹</button>
+                <button type="submit" class="primary-btn">Login</button>
+                <button type="button" class="secondary-btn" id="ssoBtn">Login with SSO</button>
 
-            <article class="feature-card active" data-index="0">
-                <h3>Seamless Data Ingestion</h3>
-                <p class="visual">APIs and data pipes unify multi-source credit inputs.</p>
-                <p>GST, Banking, Bureau, Financials — unified in seconds.</p>
-            </article>
-            <article class="feature-card" data-index="1">
-                <h3>AI-driven Financial &amp; Risk Analysis</h3>
-                <p class="visual">AI scans statements, charts, and behaviors for patterns.</p>
-                <p>Automated ratio analysis, trend detection, anomaly flags.</p>
-            </article>
-            <article class="feature-card" data-index="2">
-                <h3>Auto-Generated CAM Drafts</h3>
-                <p class="visual">Documents assemble section-by-section with policy context.</p>
-                <p>Structured, policy-aligned, ready-to-review outputs.</p>
-            </article>
-            <article class="feature-card" data-index="3">
-                <h3>Decision Intelligence Layer</h3>
-                <p class="visual">Risk scoring and recommendation insights in one panel.</p>
-                <p>Risk signals, scorecards, recommendation insights.</p>
-            </article>
-            <article class="feature-card" data-index="4">
-                <h3>Integrated Workflow &amp; Governance</h3>
-                <p class="visual">Maker-checker flow with checklist-guided controls.</p>
-                <p>Audit trails, maker-checker, compliance-ready.</p>
-            </article>
+                <div class="loader" id="ssoLoader" hidden>
+                    <span></span><span></span><span></span>
+                    <p>Redirecting to enterprise SSO...</p>
+                </div>
+            </form>
+        </section>
 
-            <button class="nav nav-next" id="nextBtn" aria-label="Next feature">›</button>
-        </div>
-
-        <div class="dots" id="carouselDots" aria-label="Feature navigation"></div>
-
-        <div class="cta-wrap">
-            <a class="cta-primary" th:href="@{/login}">Proceed to Login</a>
-            <p>Powered by AI. Built for Credit Excellence.</p>
-        </div>
-    </section>
+        <section class="screen" id="welcomeScreen" aria-label="Welcome">
+            <div class="bg-network faint" aria-hidden="true"></div>
+            <div class="welcome-card">
+                <div class="checkmark">✓</div>
+                <h2 id="welcomeHeading">Welcome, User</h2>
+                <p>Role: Credit Officer</p>
+                <button class="primary-btn" id="proceedBtn">Proceed</button>
+            </div>
+        </section>
+    </main>
 </div>
 
 <script th:src="@{/js/landing.js}"></script>
