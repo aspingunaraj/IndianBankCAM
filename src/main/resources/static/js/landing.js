@@ -7,8 +7,10 @@ const screens = {
   newToBank: document.getElementById('newToBankScreen'),
   dataLoading: document.getElementById('dataLoadingScreen'),
   dataReveal: document.getElementById('dataRevealScreen'),
+  preGenerationInsights: document.getElementById('preGenerationInsightsScreen'),
   camGeneration: document.getElementById('camGenerationScreen'),
   documentUpload: document.getElementById('documentUploadScreen'),
+  postUploadInsights: document.getElementById('postUploadInsightsScreen'),
   finalWorkspace: document.getElementById('finalCamWorkspaceScreen'),
 };
 
@@ -26,8 +28,10 @@ function titleFor(screenKey) {
     newToBank: 'New to Bank Intake',
     dataLoading: 'Company Data Aggregation',
     dataReveal: 'Company Data & Documents',
+    preGenerationInsights: 'CAM Pre-Fill Status',
     camGeneration: 'CAM Generation',
     documentUpload: 'Additional Inputs',
+    postUploadInsights: 'CAM Readiness Update',
     finalWorkspace: 'Final CAM Workspace',
   };
   return titles[screenKey] || 'Credit Appraisal Dashboard';
@@ -211,9 +215,11 @@ function startCamGeneration() {
   setTimeout(() => camFinalMsg.classList.add('show'), 3600);
 }
 
-document.getElementById('generateCamBtn').addEventListener('click', startCamGeneration);
+document.getElementById('generateCamBtn').addEventListener('click', () => showScreen('preGenerationInsights'));
+document.getElementById('toSectionGenerationBtn').addEventListener('click', startCamGeneration);
 document.getElementById('toUploadBtn').addEventListener('click', () => showScreen('documentUpload'));
-document.getElementById('toWorkspaceBtn').addEventListener('click', () => showScreen('finalWorkspace'));
+document.getElementById('toWorkspaceBtn').addEventListener('click', () => showScreen('postUploadInsights'));
+document.getElementById('openFinalCamBtn').addEventListener('click', () => showScreen('finalWorkspace'));
 
 document.querySelectorAll('.upload-card').forEach((card) => {
   const fileInput = card.querySelector('input[type="file"]');
