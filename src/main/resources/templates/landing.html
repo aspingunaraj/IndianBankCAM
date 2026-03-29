@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Bank CAM Platform</title>
+    <link rel="stylesheet" th:href="@{/css/landing.css}">
+</head>
+<body>
+<div class="app-shell">
+    <header class="top-header">
+        <div class="header-left"><span class="brand">Indian Bank</span></div>
+        <div class="header-center"><span id="pageTitle">Credit Appraisal Dashboard</span></div>
+        <div class="header-right">
+            <button class="primary-btn header-cta" id="createCamBtn">+ Create New CAM</button>
+            <div class="user-pill" id="userPill">CO</div>
+        </div>
+    </header>
+
+    <main class="screen-stack">
+        <section class="screen is-active" id="landingScreen">
+            <div class="bg-network"></div>
+            <div class="landing-content">
+                <h1>Reimagining Credit Appraisal with AI</h1>
+                <p>From data ingestion to decision-ready CAMs — faster, smarter, consistent.</p>
+                <div class="carousel-wrap">
+                    <button class="nav-arrow" id="prevSlide">‹</button>
+                    <div class="slides" id="slides">
+                        <article class="slide active"><h3>AI Data Aggregation</h3><p>Unified ingestion from GST, banking, bureau and financial statement sources.</p></article>
+                        <article class="slide"><h3>Financial &amp; Risk Analysis</h3><p>Automated ratios, trend scans, anomalies and risk indicators in one view.</p></article>
+                        <article class="slide"><h3>CAM Auto-Generation</h3><p>Structured CAM drafts generated section-wise with policy aligned formatting.</p></article>
+                        <article class="slide"><h3>Decision Support</h3><p>Scorecards and recommendation insights for faster, consistent credit decisions.</p></article>
+                        <article class="slide"><h3>Workflow &amp; Compliance</h3><p>Maker-checker controls, audit traceability and compliance-ready checkpoints.</p></article>
+                    </div>
+                    <button class="nav-arrow" id="nextSlide">›</button>
+                </div>
+                <div class="dots" id="slideDots"></div>
+                <button class="primary-btn" id="toLoginBtn">Take me to Login</button>
+            </div>
+        </section>
+
+        <section class="screen" id="loginScreen">
+            <div class="bg-particles"></div>
+            <form class="card" id="loginForm">
+                <h2>Secure Sign-in</h2>
+                <label for="userId">User ID</label><input id="userId" type="text" placeholder="Enter User ID">
+                <label for="password">Password</label><input id="password" type="password" placeholder="Enter Password">
+                <button class="primary-btn" type="submit">Login</button>
+                <button class="secondary-btn" type="button" id="ssoBtn">Login with SSO</button>
+                <div class="loader" id="ssoLoader" hidden><span></span><span></span><span></span><p>Redirecting via enterprise SSO...</p></div>
+            </form>
+        </section>
+
+        <section class="screen" id="welcomeScreen">
+            <div class="card welcome-card">
+                <div class="checkmark">✓</div>
+                <h2 id="welcomeText">Welcome, User</h2>
+                <p>Role: Credit Officer</p>
+                <button class="primary-btn" id="toDashboardBtn">Proceed</button>
+            </div>
+        </section>
+
+        <section class="screen" id="dashboardScreen">
+            <div class="dashboard-wrap">
+                <section class="kpi-strip">
+                    <article class="kpi-card"><p class="kpi-label">CAMs in Progress</p><p class="kpi-value" data-target="12">0</p></article>
+                    <article class="kpi-card"><p class="kpi-label">Completed (This Month)</p><p class="kpi-value" data-target="28">0</p></article>
+                    <article class="kpi-card"><p class="kpi-label">Avg Turnaround Time</p><p class="kpi-value" data-target="2.4">0</p><span class="kpi-unit">days</span></article>
+                    <article class="kpi-card"><p class="kpi-label">Approval Rate</p><p class="kpi-value" data-target="78">0</p><span class="kpi-unit">%</span></article>
+                    <article class="kpi-card"><p class="kpi-label">High Risk Cases</p><p class="kpi-value" data-target="5">0</p></article>
+                </section>
+            </div>
+        </section>
+
+        <section class="screen" id="camSelectionScreen">
+            <div class="selection-wrap">
+                <h2>Select CAM Journey</h2>
+                <div class="option-grid">
+                    <button class="option-card" id="newToBankBtn">New to Bank</button>
+                    <button class="option-card" id="existingToBankBtn">Existing to Bank</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="screen" id="newToBankScreen">
+            <div class="card form-card">
+                <h2>New to Bank - Entity Details</h2>
+                <p class="helper-text">Company: Reliance Industries Limited</p>
+                <label for="cin">CIN</label><input id="cin" type="text" value="L17110MH1973PLC019786">
+                <label for="gstin">GSTIN</label><input id="gstin" type="text" value="27AAACR5055K1Z6">
+                <label for="pan">PAN</label><input id="pan" type="text" value="AAACR5055K">
+                <button class="primary-btn proceed-cam-btn" id="proceedCamBtn" type="button">Proceed with CAM Preparation</button>
+            </div>
+        </section>
+
+        <section class="screen loading-screen" id="dataLoadingScreen">
+            <div class="loading-core">
+                <div class="orb"><span></span><span></span><span></span></div>
+                <h2>Aggregating Company Data</h2>
+                <p>Fetching verified information across regulatory and financial data sources using CIN…</p>
+                <ul class="commentary-feed" id="commentaryFeed"></ul>
+            </div>
+        </section>
+
+        <section class="screen" id="dataRevealScreen">
+            <div class="data-reveal-wrap">
+                <section class="company-banner">
+                    <h2>Company Data &amp; Documents Retrieved</h2>
+                    <p>Information successfully aggregated from external verified sources</p>
+                    <p class="cin-tag">Reliance Industries Limited · CIN: L17110MH1973PLC019786</p>
+                </section>
+
+                <section class="data-grid">
+                    <article class="panel">
+                        <h3>Corporate Information</h3>
+                        <ul class="kv-list">
+                            <li><span>Legal Name</span><strong>Reliance Industries Limited</strong></li>
+                            <li><span>CIN</span><strong>L17110MH1973PLC019786</strong></li>
+                            <li><span>Incorporation Date</span><strong>08-May-1973</strong></li>
+                            <li><span>Registered Address</span><strong>Mumbai, Maharashtra</strong></li>
+                            <li><span>Listing Status</span><strong>Listed (NSE/BSE)</strong></li>
+                        </ul>
+                    </article>
+                    <article class="panel">
+                        <h3>Compliance &amp; Registration</h3>
+                        <ul class="kv-list">
+                            <li><span>PAN</span><strong>AAACR5055K</strong></li>
+                            <li><span>GSTIN</span><strong>27AAACR5055K1Z6</strong></li>
+                            <li><span>MCA Filing Status</span><strong>Up to date</strong></li>
+                            <li><span>ROC Status</span><strong>Active</strong></li>
+                        </ul>
+                    </article>
+                    <article class="panel">
+                        <h3>Directors &amp; Management</h3>
+                        <ul class="kv-list">
+                            <li><span>Director Names</span><strong>Mukesh D. Ambani, Nikhil R. Meswani</strong></li>
+                            <li><span>DIN Details</span><strong>00001695, 00001615</strong></li>
+                            <li><span>Board Composition</span><strong>Executive + Independent mix</strong></li>
+                        </ul>
+                    </article>
+                    <article class="panel">
+                        <h3>Corporate Structure</h3>
+                        <ul class="kv-list">
+                            <li><span>Subsidiaries</span><strong>Reliance Retail, Jio Platforms</strong></li>
+                            <li><span>Group Companies</span><strong>Reliance BP Mobility</strong></li>
+                            <li><span>Shareholding Pattern</span><strong>Promoter 50.30%, Public 49.70%</strong></li>
+                        </ul>
+                    </article>
+                    <article class="panel full">
+                        <h3>Financial Filings Available</h3>
+                        <ul class="kv-list">
+                            <li><span>Profit &amp; Loss Statements</span><strong>Last 5 years</strong></li>
+                            <li><span>Balance Sheets</span><strong>Last 5 years</strong></li>
+                            <li><span>Auditor Information</span><strong>Available</strong></li>
+                        </ul>
+                    </article>
+                    <article class="panel full">
+                        <h3>Documents Retrieved</h3>
+                        <div class="doc-tiles" id="docTiles">
+                            <div class="doc-tile">📄 AOC-4 Financial Statements</div>
+                            <div class="doc-tile">📄 MGT-7 Annual Return</div>
+                            <div class="doc-tile">📘 MOA / AOA</div>
+                            <div class="doc-tile">🏢 Certificate of Incorporation</div>
+                            <div class="doc-tile">📂 MCA Filings</div>
+                            <div class="doc-tile">🪪 Director KYC Records</div>
+                        </div>
+                    </article>
+                </section>
+                <button class="primary-btn" id="generateCamBtn">Generate CAM</button>
+            </div>
+        </section>
+
+        <section class="screen loading-screen" id="camGenerationScreen">
+            <div class="loading-core">
+                <h2>Generating Credit Appraisal Memorandum</h2>
+                <p id="camProgressText">Initializing CAM builder…</p>
+                <ul class="commentary-feed" id="camProgressFeed"></ul>
+                <p class="completion-note" id="camFinalMessage" hidden>CAM draft generated using available data sources</p>
+                <button class="primary-btn" id="toUploadBtn" hidden>Continue to Document Upload</button>
+            </div>
+        </section>
+
+        <section class="screen" id="uploadScreen">
+            <div class="data-reveal-wrap">
+                <section class="company-banner">
+                    <h2>Enhance CAM with Additional Inputs</h2>
+                </section>
+                <section class="upload-grid" id="uploadGrid">
+                    <article class="upload-card" data-module="Site Visit Report"><h4>Site Visit Report</h4><input type="file" class="file-input"><p class="file-preview">No file selected</p><button class="secondary-btn replace-btn" type="button">Replace</button></article>
+                    <article class="upload-card" data-module="Valuation Report"><h4>Valuation Report</h4><input type="file" class="file-input"><p class="file-preview">No file selected</p><button class="secondary-btn replace-btn" type="button">Replace</button></article>
+                    <article class="upload-card" data-module="Bank Statements"><h4>Bank Statements</h4><input type="file" class="file-input"><p class="file-preview">No file selected</p><button class="secondary-btn replace-btn" type="button">Replace</button></article>
+                    <article class="upload-card" data-module="Financial Projections"><h4>Financial Projections</h4><input type="file" class="file-input"><p class="file-preview">No file selected</p><button class="secondary-btn replace-btn" type="button">Replace</button></article>
+                    <article class="upload-card" data-module="CMA Data"><h4>CMA Data</h4><input type="file" class="file-input"><p class="file-preview">No file selected</p><button class="secondary-btn replace-btn" type="button">Replace</button></article>
+                    <article class="upload-card" data-module="Internal Credit Notes"><h4>Internal Credit Notes</h4><input type="file" class="file-input"><p class="file-preview">No file selected</p><button class="secondary-btn replace-btn" type="button">Replace</button></article>
+                </section>
+                <button class="primary-btn" id="generateCompleteCamBtn">Generate Complete CAM</button>
+            </div>
+        </section>
+
+        <section class="screen" id="workspaceScreen">
+            <div class="workspace-shell">
+                <aside class="workspace-left">
+                    <h3>CAM Sections</h3>
+                    <ul id="camNav">
+                        <li class="active" data-target="sec-exec">✓ Executive Summary</li>
+                        <li data-target="sec-borrower">✓ Borrower Profile</li>
+                        <li data-target="sec-industry">✓ Industry &amp; Business Analysis</li>
+                        <li data-target="sec-financial">✓ Financial Analysis</li>
+                        <li data-target="sec-facility">✓ Credit Facility Details</li>
+                        <li data-target="sec-security">✓ Security &amp; Collateral</li>
+                        <li data-target="sec-risk">✓ Risk Assessment</li>
+                        <li data-target="sec-compliance">✓ Compliance &amp; Regulatory Checks</li>
+                        <li data-target="sec-terms">✓ Terms &amp; Conditions</li>
+                        <li data-target="sec-account">✓ Account Conduct</li>
+                        <li data-target="sec-peer">✓ Peer Comparison</li>
+                        <li data-target="sec-reco">✓ Recommendation</li>
+                        <li data-target="sec-annex">✓ Annexures</li>
+                    </ul>
+                </aside>
+
+                <section class="workspace-center" id="workspaceDocument">
+                    <article id="sec-exec"><h3>Executive Summary</h3><table><tr><td>Borrower</td><td>Infosys Limited</td></tr><tr><td>Proposal</td><td>Renewal &amp; Enhancement</td></tr><tr><td>Exposure</td><td>₹ 2,500 Crore</td></tr><tr><td>Rating</td><td>SBI-1 (AAA Equivalent)</td></tr><tr><td>Recommendation</td><td>Approval Recommended</td></tr></table></article>
+                    <article id="sec-borrower"><h3>Borrower Profile</h3><p>Company: Infosys Limited · Industry: IT Services · Incorporation: 1981 · Business: Digital services, consulting, cloud.</p></article>
+                    <article id="sec-industry"><h3>Industry &amp; Business Analysis</h3><p>Indian IT sector continues strong growth. Global demand driven by cloud and AI. Risks include macro slowdown and pricing pressure.</p></article>
+                    <article id="sec-financial"><h3>Financial Analysis</h3><p>Strong revenue growth, stable margins, and robust cash flow generation across periods reviewed.</p></article>
+                    <article id="sec-facility"><h3>Credit Facility Details</h3><p>CC / WCDL / Term Loan / BG / LC. Total exposure: ₹ 2,500 Cr.</p></article>
+                    <article id="sec-security"><h3>Security &amp; Collateral</h3><p>Charge on current assets, fixed asset collateral, and corporate guarantee.</p></article>
+                    <article id="sec-risk"><h3>Risk Assessment</h3><p>Low risk borrower with strong balance sheet. Sector risks manageable.</p></article>
+                    <article id="sec-compliance"><h3>Compliance &amp; Regulatory Checks</h3><p>KYC compliant, no adverse reports, within RBI norms.</p></article>
+                    <article id="sec-terms"><h3>Terms &amp; Conditions</h3><p>Pricing, covenant package, reporting requirements and drawdown controls documented.</p></article>
+                    <article id="sec-account"><h3>Account Conduct</h3><p>Strong repayment track, no delay indicators observed.</p></article>
+                    <article id="sec-peer"><h3>Peer Comparison</h3><p>Comparable peers show similar margin profile; borrower remains in top quartile for leverage and cash conversion.</p></article>
+                    <article id="sec-reco"><h3>Recommendation</h3><p>Approval recommended subject to standard terms and periodic monitoring.</p></article>
+                    <article id="sec-annex"><h3>Annexures</h3><p>Financial statements, bank statements, valuation and compliance appendices attached.</p></article>
+                </section>
+
+                <aside class="workspace-right">
+                    <h3>Review &amp; Inputs Required</h3>
+                    <ul>
+                        <li>Add site visit observations</li>
+                        <li>Validate projections</li>
+                        <li>Confirm collateral valuation</li>
+                        <li>Review deviations from policy</li>
+                    </ul>
+                    <label for="reviewNotes">Comments / Notes</label>
+                    <textarea id="reviewNotes" rows="8" placeholder="Add reviewer comments here..."></textarea>
+                </aside>
+            </div>
+        </section>
+    </main>
+</div>
+<script th:src="@{/js/landing.js}"></script>
+</body>
+</html>
