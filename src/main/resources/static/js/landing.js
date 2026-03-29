@@ -5,6 +5,8 @@ const screens = {
   dashboard: document.getElementById('dashboardScreen'),
   camSelection: document.getElementById('camSelectionScreen'),
   newToBank: document.getElementById('newToBankScreen'),
+  dataLoading: document.getElementById('dataLoadingScreen'),
+  dataReveal: document.getElementById('dataRevealScreen'),
 };
 
 const pageTitle = document.getElementById('pageTitle');
@@ -19,6 +21,8 @@ function titleFor(screenKey) {
     dashboard: 'Credit Appraisal Dashboard',
     camSelection: 'Create New CAM',
     newToBank: 'New to Bank Intake',
+    dataLoading: 'Company Data Aggregation',
+    dataReveal: 'Company Intelligence View',
   };
   return titles[screenKey] || 'Credit Appraisal Dashboard';
 }
@@ -126,21 +130,53 @@ document.getElementById('toDashboardBtn').addEventListener('click', () => showSc
 document.getElementById('newToBankBtn').addEventListener('click', () => showScreen('newToBank'));
 document.getElementById('existingToBankBtn').addEventListener('click', () => console.log('Existing to Bank flow placeholder'));
 
-const samples = [
-  { company: 'Reliance Industries Limited', cin: 'L17110MH1973PLC019786', gstin: '27AAACR5055K1Z6', pan: 'AAACR5055K' },
-  { company: 'Tata Consultancy Services Limited', cin: 'L22210MH1995PLC084781', gstin: '27AAACT2727Q1ZW', pan: 'AAACT2727Q' },
+const commentaryFeed = document.getElementById('commentaryFeed');
+const commentaryLines = [
+  'Validating CIN with MCA registry…',
+  'Fetching company master data…',
+  'Retrieving incorporation and capital structure…',
+  'Extracting director profiles and DIN details…',
+  'Mapping director network across associated entities…',
+  'Pulling financial statements (Profit & Loss, Balance Sheet)…',
+  'Structuring historical financial data…',
+  'Checking compliance status and regulatory filings…',
+  'Retrieving legal and charge-related information…',
+  'Identifying related companies and group structure…',
+  'Extracting shareholding and ownership patterns…',
+  'Validating GSTIN and filing history…',
+  'Verifying PAN records…',
+  'Fetching AOC-4 (Financial Statements)…',
+  'Retrieving MGT-7 (Annual Return)…',
+  'Loading MOA, AOA and Certificate of Incorporation…',
+  'Compiling comprehensive company data pack…',
+  'Company data successfully aggregated',
 ];
 
-const selectedSample = samples[Math.floor(Math.random() * samples.length)];
-document.getElementById('sampleCompany').textContent = `Company: ${selectedSample.company}`;
-document.getElementById('cin').value = selectedSample.cin;
-document.getElementById('gstin').value = selectedSample.gstin;
-document.getElementById('pan').value = selectedSample.pan;
+function startAggregationExperience() {
+  commentaryFeed.innerHTML = '';
+  showScreen('dataLoading');
 
-document.getElementById('proceedCamBtn').addEventListener('click', () => {
-  console.log('Proceed with CAM Preparation', {
-    cin: document.getElementById('cin').value,
-    gstin: document.getElementById('gstin').value,
-    pan: document.getElementById('pan').value,
+  commentaryLines.forEach((line, idx) => {
+    setTimeout(() => {
+      const li = document.createElement('li');
+      li.textContent = line;
+      if (line.includes('AOC-4') || line.includes('MGT-7') || line.includes('MOA')) {
+        li.classList.add('doc');
+      }
+      commentaryFeed.appendChild(li);
+      commentaryFeed.scrollTop = commentaryFeed.scrollHeight;
+    }, idx * 430);
   });
+
+  setTimeout(() => {
+    showScreen('dataReveal');
+    document.querySelectorAll('.doc-tile').forEach((tile, idx) => {
+      setTimeout(() => tile.classList.add('show'), idx * 130);
+    });
+  }, 8200);
+}
+
+document.getElementById('proceedCamBtn').addEventListener('click', startAggregationExperience);
+document.getElementById('generateCamBtn').addEventListener('click', () => {
+  console.log('Generate CAM placeholder');
 });
