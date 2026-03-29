@@ -28,13 +28,7 @@ public class LoginController {
             return "login";
         }
 
-        model.addAttribute("userId", loginForm.getUserId());
-        return "home";
-    }
-
-    @GetMapping("/sso/login")
-    public String ssoLogin(Model model) {
-        model.addAttribute("successMessage", "SSO redirect initiated. Integrate with bank IdP in next phase.");
+        model.addAttribute("successMessage", "Demo login captured for user: " + loginForm.getUserId());
         model.addAttribute("loginForm", new LoginForm());
         return "login";
     }
