@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Bank CAM Platform | AI Intro</title>
+    <link rel="stylesheet" th:href="@{/css/landing.css}">
+</head>
+<body>
+<div class="landing-root" id="landingRoot">
+    <div th:replace="~{fragments/header :: brandHeader}"></div>
+
+    <section class="intro-sequence" aria-live="polite">
+        <div class="network-bg" aria-hidden="true">
+            <span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span>
+            <span class="link"></span><span class="link"></span><span class="link"></span>
+        </div>
+
+        <div class="ai-orb" aria-hidden="true">
+            <span class="ring ring-1"></span>
+            <span class="ring ring-2"></span>
+            <span class="core"></span>
+            <span class="doc doc-1"></span>
+            <span class="doc doc-2"></span>
+            <span class="doc doc-3"></span>
+        </div>
+
+        <div class="headline-wrap">
+            <h1>Reimagining Credit Appraisal with AI</h1>
+            <p>From data ingestion to decision-ready CAMs — faster, smarter, consistent</p>
+        </div>
+    </section>
+
+    <section class="feature-stage" id="featureStage" aria-label="Platform capabilities">
+        <div class="feature-header">
+            <p class="kicker">Platform Capabilities</p>
+            <h2>Enterprise intelligence for CAM lifecycle</h2>
+        </div>
+
+        <div class="carousel" id="featureCarousel">
+            <button class="nav nav-prev" id="prevBtn" aria-label="Previous feature">‹</button>
+
+            <article class="feature-card active" data-index="0">
+                <h3>Seamless Data Ingestion</h3>
+                <p class="visual">APIs and data pipes unify multi-source credit inputs.</p>
+                <p>GST, Banking, Bureau, Financials — unified in seconds.</p>
+            </article>
+            <article class="feature-card" data-index="1">
+                <h3>AI-driven Financial &amp; Risk Analysis</h3>
+                <p class="visual">AI scans statements, charts, and behaviors for patterns.</p>
+                <p>Automated ratio analysis, trend detection, anomaly flags.</p>
+            </article>
+            <article class="feature-card" data-index="2">
+                <h3>Auto-Generated CAM Drafts</h3>
+                <p class="visual">Documents assemble section-by-section with policy context.</p>
+                <p>Structured, policy-aligned, ready-to-review outputs.</p>
+            </article>
+            <article class="feature-card" data-index="3">
+                <h3>Decision Intelligence Layer</h3>
+                <p class="visual">Risk scoring and recommendation insights in one panel.</p>
+                <p>Risk signals, scorecards, recommendation insights.</p>
+            </article>
+            <article class="feature-card" data-index="4">
+                <h3>Integrated Workflow &amp; Governance</h3>
+                <p class="visual">Maker-checker flow with checklist-guided controls.</p>
+                <p>Audit trails, maker-checker, compliance-ready.</p>
+            </article>
+
+            <button class="nav nav-next" id="nextBtn" aria-label="Next feature">›</button>
+        </div>
+
+        <div class="dots" id="carouselDots" aria-label="Feature navigation"></div>
+
+        <div class="cta-wrap">
+            <a class="cta-primary" th:href="@{/login}">Proceed to Login</a>
+            <p>Powered by AI. Built for Credit Excellence.</p>
+        </div>
+    </section>
+</div>
+
+<script th:src="@{/js/landing.js}"></script>
+</body>
+</html>

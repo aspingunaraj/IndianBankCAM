@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
 
-    @GetMapping({"/", "/login"})
+    @GetMapping("/")
+    public String landingPage() {
+        return "landing";
+    }
+
+    @GetMapping("/login")
     public String loginPage(Model model) {
         if (!model.containsAttribute("loginForm")) {
             model.addAttribute("loginForm", new LoginForm());
@@ -28,7 +33,13 @@ public class LoginController {
             return "login";
         }
 
-        model.addAttribute("successMessage", "Demo login captured for user: " + loginForm.getUserId());
+        model.addAttribute("userId", loginForm.getUserId());
+        return "home";
+    }
+
+    @GetMapping("/sso/login")
+    public String ssoLogin(Model model) {
+        model.addAttribute("successMessage", "SSO redirect initiated. Integrate with bank IdP in next phase.");
         model.addAttribute("loginForm", new LoginForm());
         return "login";
     }

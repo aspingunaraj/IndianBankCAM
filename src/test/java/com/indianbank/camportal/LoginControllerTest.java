@@ -18,6 +18,13 @@ class LoginControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    void shouldRenderLandingPage() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("landing"));
+    }
+
+    @Test
     void shouldRenderLoginPage() throws Exception {
         mockMvc.perform(get("/login"))
                 .andExpect(status().isOk())
