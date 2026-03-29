@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Bank CAM Portal | Login</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="login-card">
+        <div class="brand-block">
+            <p class="bank-name">Indian Bank</p>
+            <h1>AI-assisted CAM Portal</h1>
+            <p class="subtitle">Credit Appraisal Memo Preparation Workspace</p>
+        </div>
+
+        <div class="message error" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+        <div class="message success" th:if="${successMessage}" th:text="${successMessage}"></div>
+
+        <form th:action="@{/login}" th:object="${loginForm}" method="post" novalidate>
+            <label for="userId">User ID</label>
+            <input id="userId" type="text" th:field="*{userId}" placeholder="Enter your employee/user ID" autocomplete="username">
+            <p class="field-error" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
+
+            <label for="password">Password</label>
+            <input id="password" type="password" th:field="*{password}" placeholder="Enter password" autocomplete="current-password">
+            <p class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
+            <button type="submit">Sign in to CAM Portal</button>
+        </form>
+
+        <p class="help-text">Demo screen for phase-1 onboarding. Authentication integration can be added in the next step.</p>
+    </div>
+</div>
+</body>
+</html>
