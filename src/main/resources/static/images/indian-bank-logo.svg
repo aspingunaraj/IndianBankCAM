@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1564 466" role="img" aria-labelledby="title desc">
+  <title id="title">Indian Bank Logo Banner</title>
+  <desc id="desc">Blue and yellow brand banner with Indian Bank name and emblem.</desc>
+  <rect width="1564" height="342" fill="#0F4F9C"/>
+  <rect y="342" width="1564" height="124" fill="#F4E81C"/>
+
+  <text x="84" y="198" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="86" font-weight="700">इंडियन बैंक</text>
+  <text x="930" y="198" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="82" font-weight="700">Indian Bank</text>
+
+  <g transform="translate(640,62)">
+    <path d="M110,15 C170,15 207,62 192,110 C185,132 166,154 132,168 L152,200 C86,218 30,174 16,118 C4,70 35,15 110,15Z" fill="#EDB541"/>
+    <path d="M25,96 C56,26 124,-6 184,14 L163,45 C120,38 92,57 81,91 C74,113 83,136 103,153 L70,170 C24,153 1,126 25,96Z" fill="#EDB541"/>
+    <path d="M93,197 C155,197 198,148 191,92 L225,71 C247,136 228,201 177,236 C130,267 61,263 22,230 L53,198 C66,198 79,197 93,197Z" fill="#EDB541"/>
+    <circle cx="113" cy="111" r="28" fill="#0F4F9C"/>
+  </g>
+
+  <g transform="translate(135,365)">
+    <path d="M9,51 L21,10 L48,10 L32,57 Z" fill="#25A7E8"/>
+    <path d="M40,15 L62,33 L75,77 L28,73 L35,47 Z" fill="#25A7E8"/>
+    <text x="96" y="70" fill="#23389E" font-family="Segoe UI, Arial, sans-serif" font-size="72" font-weight="800">इलाहाबाद</text>
+  </g>
+  <text x="930" y="408" fill="#23389E" font-family="Segoe UI, Arial, sans-serif" font-size="72" font-weight="800">ALLAHABAD</text>
+</svg>
