@@ -127,21 +127,214 @@
         <section class="screen" id="dataRevealScreen">
             <div class="data-reveal-wrap">
                 <section class="company-banner">
-                    <h2>Reliance Industries Limited</h2>
-                    <p>Comprehensive company data retrieved via CIN</p>
-                    <p class="cin-tag">CIN: L17110MH1973PLC019786</p>
+                    <div class="banner-aurora" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <h2>✨ Company Data &amp; Documents Retrieved ✨</h2>
+                    <p class="banner-subtext">All information shown below has been sourced from <strong>externally validated systems</strong>.</p>
+                    <div class="source-pills" aria-label="Validated external sources">
+                        <span class="source-pill">MCA Verified</span>
+                        <span class="source-pill">NSDL Validated</span>
+                        <span class="source-pill">GSTN Authenticated</span>
+                    </div>
                 </section>
 
-                <section class="data-grid">
-                    <article class="panel"><h3>Company Overview</h3><ul class="kv-list"><li><span>Legal Name</span><strong>Reliance Industries Limited</strong></li><li><span>CIN</span><strong>L17110MH1973PLC019786</strong></li><li><span>Incorporation Date</span><strong>08-May-1973</strong></li><li><span>Entity Type</span><strong>Public Limited</strong></li><li><span>Listing Status</span><strong>Listed (NSE/BSE)</strong></li><li><span>Registered Address</span><strong>Mumbai, Maharashtra</strong></li><li><span>Compliance Status</span><strong>Active &amp; Compliant</strong></li></ul></article>
-                    <article class="panel"><h3>Financial Snapshot</h3><div class="metric-cards"><div><span>Revenue</span><strong>₹9,74,864 Cr</strong></div><div><span>EBITDA</span><strong>₹1,54,392 Cr</strong></div><div><span>PAT</span><strong>₹79,020 Cr</strong></div><div><span>Net Worth</span><strong>₹7,01,994 Cr</strong></div><div><span>Authorized Capital</span><strong>₹15,000 Cr</strong></div><div><span>Paid-up Capital</span><strong>₹6,766 Cr</strong></div></div></article>
-                    <article class="panel"><h3>Key Financial Metrics</h3><div class="metric-inline"><span>Debt/Equity <strong>0.44</strong></span><span>ROE <strong>11.8%</strong></span><span>Current Ratio <strong>1.32</strong></span><span>Interest Coverage <strong>6.4x</strong></span></div></article>
-                    <article class="panel"><h3>Directors &amp; Network</h3><table><thead><tr><th>Name</th><th>DIN</th><th>Designation</th><th>Other Directorships</th></tr></thead><tbody><tr><td>Mukesh D. Ambani</td><td>00001695</td><td>Chairman</td><td>Jio Platforms, Reliance Retail</td></tr><tr><td>Nikhil R. Meswani</td><td>00001615</td><td>Executive Director</td><td>Reliance Industrial Infra</td></tr></tbody></table></article>
-                    <article class="panel"><h3>Shareholding &amp; Corporate Structure</h3><ul class="kv-list"><li><span>Promoter Holding</span><strong>50.30%</strong></li><li><span>Public Holding</span><strong>49.70%</strong></li><li><span>Subsidiaries / Associates</span><strong>Jio Platforms, Reliance Retail, Reliance BP Mobility</strong></li></ul></article>
-                    <article class="panel"><h3>Charges &amp; Legal</h3><ul class="kv-list"><li><span>Open Charges</span><strong>12 active filings</strong></li><li><span>Major Charge Holders</span><strong>SBI, ICICI Bank, HDFC Bank</strong></li><li><span>Legal Case Indicators</span><strong>Material case flags: 2</strong></li></ul></article>
-                    <article class="panel full"><h3>Documents</h3><div class="doc-tiles" id="docTiles"><div class="doc-tile">AOC-4 Financial Statements (PDF)</div><div class="doc-tile">MGT-7 Annual Return</div><div class="doc-tile">MOA / AOA</div><div class="doc-tile">Certificate of Incorporation</div><div class="doc-tile">Company Data Pack (Compiled Report)</div></div></article>
+                <section class="info-retrieved">
+                    <h3>Information Retrieved</h3>
+                    <div class="data-grid grouped-cards">
+                        <article class="panel info-card">
+                            <h4>Corporate Information</h4>
+                            <ul class="kv-list">
+                                <li>Legal Name</li>
+                                <li>CIN</li>
+                                <li>Incorporation Date</li>
+                                <li>Registered Address</li>
+                                <li>Listing Status</li>
+                            </ul>
+                        </article>
+                        <article class="panel info-card">
+                            <h4>Compliance &amp; Registration</h4>
+                            <ul class="kv-list">
+                                <li>PAN</li>
+                                <li>GSTIN</li>
+                                <li>MCA Filing Status</li>
+                                <li>ROC Status</li>
+                            </ul>
+                        </article>
+                        <article class="panel info-card">
+                            <h4>Directors &amp; Management</h4>
+                            <ul class="kv-list">
+                                <li>Director Names</li>
+                                <li>DIN Details</li>
+                                <li>Board Composition</li>
+                            </ul>
+                        </article>
+                        <article class="panel info-card">
+                            <h4>Corporate Structure</h4>
+                            <ul class="kv-list">
+                                <li>Subsidiaries</li>
+                                <li>Group Companies</li>
+                                <li>Shareholding Pattern</li>
+                            </ul>
+                        </article>
+                        <article class="panel info-card">
+                            <h4>Financial Filings Available</h4>
+                            <ul class="kv-list">
+                                <li>Profit &amp; Loss Statements</li>
+                                <li>Balance Sheets</li>
+                                <li>Auditor Information</li>
+                            </ul>
+                        </article>
+                    </div>
                 </section>
-                <button class="primary-btn" id="generateCamBtn">Generate CAM</button>
+
+                <section class="documents-retrieved panel full">
+                    <h3>Documents Retrieved</h3>
+                    <div class="doc-tiles" id="docTiles">
+                        <div class="doc-tile"><span class="doc-icon">📄</span><span>AOC-4 Financial Statements</span></div>
+                        <div class="doc-tile"><span class="doc-icon">🧾</span><span>MGT-7 Annual Return</span></div>
+                        <div class="doc-tile"><span class="doc-icon">📘</span><span>MOA / AOA</span></div>
+                        <div class="doc-tile"><span class="doc-icon">🏛️</span><span>Certificate of Incorporation</span></div>
+                        <div class="doc-tile"><span class="doc-icon">🗂️</span><span>MCA Filings</span></div>
+                        <div class="doc-tile"><span class="doc-icon">🪪</span><span>Director KYC Records</span></div>
+                    </div>
+                </section>
+                <button class="primary-btn cta-generate" id="generateCamBtn">👉 Generate CAM</button>
+            </div>
+        </section>
+
+        <section class="screen" id="preGenerationInsightsScreen">
+            <div class="premium-fx" aria-hidden="true"><span></span><span></span><span></span><i></i><i></i></div>
+            <div class="insight-splash panel">
+                <h2>CAM Pre-Fill Intelligence Ready</h2>
+                <p class="insight-big"><strong>68%</strong> of CAM is already filled using external validated sources.</p>
+                <p>MCA + NSDL + GSTN + filing intelligence has pre-populated key sections with verified data.</p>
+                <button class="primary-btn cta-generate" id="toSectionGenerationBtn">Continue to Section-wise Completion</button>
+            </div>
+        </section>
+
+        <section class="screen" id="camGenerationScreen">
+            <div class="cam-gen-wrap">
+                <section class="panel cam-gen-header">
+                    <h2>Generating Credit Appraisal Memorandum</h2>
+                    <p>Building section-wise CAM draft with validated company data and retrieved filings.</p>
+                </section>
+                <section class="panel generation-list" id="generationList">
+                    <article class="gen-item" data-percent="80"><span>Executive Summary</span><strong class="gen-status">80% complete</strong></article>
+                    <article class="gen-item" data-percent="90"><span>Borrower Profile</span><strong class="gen-status">90% complete</strong></article>
+                    <article class="gen-item" data-percent="75"><span>Industry &amp; Business Analysis</span><strong class="gen-status">75% complete</strong></article>
+                    <article class="gen-item" data-percent="70"><span>Financial Analysis</span><strong class="gen-status">70% complete</strong></article>
+                    <article class="gen-item" data-percent="85"><span>Credit Facility Details</span><strong class="gen-status">85% complete</strong></article>
+                    <article class="gen-item" data-percent="82"><span>Security &amp; Collateral</span><strong class="gen-status">82% complete</strong></article>
+                    <article class="gen-item" data-percent="76"><span>Risk Assessment</span><strong class="gen-status">76% complete</strong></article>
+                    <article class="gen-item" data-percent="92"><span>Compliance &amp; Regulatory Checks</span><strong class="gen-status">92% complete</strong></article>
+                    <article class="gen-item" data-percent="78"><span>Terms &amp; Covenants</span><strong class="gen-status">78% complete</strong></article>
+                    <article class="gen-item" data-percent="88"><span>Account Conduct</span><strong class="gen-status">88% complete</strong></article>
+                    <article class="gen-item" data-percent="74"><span>Peer Comparison</span><strong class="gen-status">74% complete</strong></article>
+                    <article class="gen-item" data-percent="94"><span>Recommendation</span><strong class="gen-status">94% complete</strong></article>
+                    <article class="gen-item" data-percent="81"><span>Annexures</span><strong class="gen-status">81% complete</strong></article>
+                    <article class="gen-item" data-percent="100"><span>Completion Indicators</span><strong class="gen-status">100% complete</strong></article>
+                </section>
+                <p class="cam-final-msg" id="camFinalMsg">CAM draft generated using available data sources</p>
+                <button class="primary-btn cta-generate" id="toUploadBtn">Proceed to Additional Inputs</button>
+            </div>
+        </section>
+
+        <section class="screen" id="documentUploadScreen">
+            <div class="upload-wrap">
+                <section class="panel">
+                    <h2>Enhance CAM with Additional Inputs</h2>
+                    <p>Add optional documents to further strengthen assessment quality and decision notes.</p>
+                </section>
+                <section class="upload-grid">
+                    <article class="panel upload-card" data-module="Site Visit Report"><h4>Site Visit Report</h4><input type="file" hidden><button class="secondary-btn upload-btn">Upload</button><p class="file-preview">No file uploaded</p><button class="replace-btn" hidden>Replace</button></article>
+                    <article class="panel upload-card" data-module="Valuation Report"><h4>Valuation Report</h4><input type="file" hidden><button class="secondary-btn upload-btn">Upload</button><p class="file-preview">No file uploaded</p><button class="replace-btn" hidden>Replace</button></article>
+                    <article class="panel upload-card" data-module="Bank Statements"><h4>Bank Statements</h4><input type="file" hidden><button class="secondary-btn upload-btn">Upload</button><p class="file-preview">No file uploaded</p><button class="replace-btn" hidden>Replace</button></article>
+                    <article class="panel upload-card" data-module="Financial Projections"><h4>Financial Projections</h4><input type="file" hidden><button class="secondary-btn upload-btn">Upload</button><p class="file-preview">No file uploaded</p><button class="replace-btn" hidden>Replace</button></article>
+                    <article class="panel upload-card" data-module="Credit Facility Details"><h4>Credit Facility Details</h4><input type="file" hidden><button class="secondary-btn upload-btn">Upload</button><p class="file-preview">No file uploaded</p><button class="replace-btn" hidden>Replace</button></article>
+                    <article class="panel upload-card" data-module="Internal Credit Notes"><h4>Internal Credit Notes</h4><input type="file" hidden><button class="secondary-btn upload-btn">Upload</button><p class="file-preview">No file uploaded</p><button class="replace-btn" hidden>Replace</button></article>
+                </section>
+                <button class="primary-btn cta-generate" id="toWorkspaceBtn">👉 Generate Complete CAM</button>
+            </div>
+        </section>
+
+        <section class="screen" id="postUploadInsightsScreen">
+            <div class="premium-fx" aria-hidden="true"><span></span><span></span><span></span><i></i><i></i></div>
+            <div class="insight-splash panel">
+                <h2>CAM Readiness Update</h2>
+                <p class="insight-big"><strong>91%</strong> of CAM is now filled</p>
+                <div class="insight-metrics">
+                    <article><strong>7</strong><span>Risk signals identified</span></article>
+                    <article><strong>4</strong><span>Policy deviations to review</span></article>
+                    <article><strong>12</strong><span>Sections auto-validated</span></article>
+                </div>
+                <button class="primary-btn cta-generate" id="openFinalCamBtn">Open Final CAM Workspace</button>
+            </div>
+        </section>
+
+        <section class="screen" id="finalCamWorkspaceScreen">
+            <div class="workspace3-wrap">
+                <aside class="workspace-pane nav-pane panel">
+                    <h3>CAM Sections</h3>
+                    <ul class="cam-nav-list">
+                        <li class="active">✓ Executive Summary</li>
+                        <li>✓ Borrower Profile</li>
+                        <li>✓ Industry &amp; Business Analysis</li>
+                        <li>✓ Financial Analysis</li>
+                        <li>✓ Credit Facility Details</li>
+                        <li>✓ Security &amp; Collateral</li>
+                        <li>✓ Risk Assessment</li>
+                        <li>✓ Compliance &amp; Regulatory Checks</li>
+                        <li>✓ Terms &amp; Conditions</li>
+                        <li>✓ Account Conduct</li>
+                        <li>✓ Peer Comparison</li>
+                        <li>✓ Recommendation</li>
+                        <li>✓ Annexures</li>
+                    </ul>
+                </aside>
+                <section class="workspace-pane doc-pane panel">
+                    <h2>Credit Appraisal Memorandum</h2>
+                    <h3>Executive Summary</h3>
+                    <table><tbody>
+                    <tr><th>Borrower</th><td>Infosys Limited</td></tr>
+                    <tr><th>Proposal</th><td>Renewal &amp; Enhancement</td></tr>
+                    <tr><th>Exposure</th><td>₹ 2,500 Crore</td></tr>
+                    <tr><th>Rating</th><td>SBI-1 (AAA Equivalent)</td></tr>
+                    <tr><th>Recommendation</th><td>Approval Recommended</td></tr>
+                    </tbody></table>
+
+                    <h3>Borrower Profile</h3>
+                    <p>Company: Infosys Limited<br>Industry: IT Services<br>Incorporation: 1981<br>Business: Digital services, consulting, cloud</p>
+                    <h3>Industry Analysis</h3>
+                    <ul><li>Indian IT sector strong growth</li><li>Global demand driven by cloud &amp; AI</li><li>Risks: macro slowdown, pricing pressure</li></ul>
+                    <h3>Financial Analysis</h3>
+                    <ul><li>Strong revenue growth</li><li>Stable margins</li><li>Strong cash flows</li></ul>
+                    <h3>Credit Facility Details</h3>
+                    <p>CC / WCDL / Term Loan / BG / LC<br>Total exposure: ₹ 2,500 Cr</p>
+                    <h3>Security &amp; Collateral</h3>
+                    <ul><li>Charge on current assets</li><li>Fixed asset collateral</li><li>Corporate guarantee</li></ul>
+                    <h3>Risk Assessment</h3>
+                    <ul><li>Low risk borrower</li><li>Strong balance sheet</li><li>Sector risks manageable</li></ul>
+                    <h3>Compliance</h3>
+                    <ul><li>KYC compliant</li><li>No adverse reports</li><li>Within RBI norms</li></ul>
+                    <h3>Account Conduct</h3>
+                    <ul><li>Strong repayment track</li><li>No delays</li></ul>
+                    <h3>Recommendation</h3>
+                    <p><strong>Approval recommended</strong></p>
+                </section>
+                <aside class="workspace-pane guide-pane panel">
+                    <h3>Review &amp; Inputs Required</h3>
+                    <ul>
+                        <li>Add site visit observations</li>
+                        <li>Validate projections</li>
+                        <li>Confirm collateral valuation</li>
+                        <li>Review deviations from policy</li>
+                    </ul>
+                    <label for="reviewComments">Add comments</label>
+                    <textarea id="reviewComments" rows="6" placeholder="Enter review comments..."></textarea>
+                    <label for="reviewNotes">Editable notes</label>
+                    <textarea id="reviewNotes" rows="8" placeholder="Capture team notes and required follow-ups..."></textarea>
+                </aside>
             </div>
         </section>
     </main>
