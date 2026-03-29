@@ -9,7 +9,12 @@
 <body>
 <div class="app-shell">
     <header class="top-header">
-        <span class="brand">Indian Bank</span>
+        <div class="header-left"><span class="brand">Indian Bank</span></div>
+        <div class="header-center"><span id="pageTitle">Credit Appraisal Dashboard</span></div>
+        <div class="header-right">
+            <button class="primary-btn header-cta" id="createCamBtn">+ Create New CAM</button>
+            <div class="user-pill" id="userPill">CO</div>
+        </div>
     </header>
 
     <main class="screen-stack">
@@ -22,26 +27,11 @@
                 <div class="carousel-wrap">
                     <button class="nav-arrow" id="prevSlide" aria-label="Previous slide">‹</button>
                     <div class="slides" id="slides">
-                        <article class="slide active">
-                            <h3>AI Data Aggregation</h3>
-                            <p>Unified ingestion from GST, banking, bureau and financial statement sources.</p>
-                        </article>
-                        <article class="slide">
-                            <h3>Financial &amp; Risk Analysis</h3>
-                            <p>Automated ratios, trend scans, anomalies and risk indicators in one view.</p>
-                        </article>
-                        <article class="slide">
-                            <h3>CAM Auto-Generation</h3>
-                            <p>Structured CAM drafts generated section-wise with policy aligned formatting.</p>
-                        </article>
-                        <article class="slide">
-                            <h3>Decision Support</h3>
-                            <p>Scorecards and recommendation insights for faster, consistent credit decisions.</p>
-                        </article>
-                        <article class="slide">
-                            <h3>Workflow &amp; Compliance</h3>
-                            <p>Maker-checker controls, audit traceability and compliance-ready checkpoints.</p>
-                        </article>
+                        <article class="slide active"><h3>AI Data Aggregation</h3><p>Unified ingestion from GST, banking, bureau and financial statement sources.</p></article>
+                        <article class="slide"><h3>Financial &amp; Risk Analysis</h3><p>Automated ratios, trend scans, anomalies and risk indicators in one view.</p></article>
+                        <article class="slide"><h3>CAM Auto-Generation</h3><p>Structured CAM drafts generated section-wise with policy aligned formatting.</p></article>
+                        <article class="slide"><h3>Decision Support</h3><p>Scorecards and recommendation insights for faster, consistent credit decisions.</p></article>
+                        <article class="slide"><h3>Workflow &amp; Compliance</h3><p>Maker-checker controls, audit traceability and compliance-ready checkpoints.</p></article>
                     </div>
                     <button class="nav-arrow" id="nextSlide" aria-label="Next slide">›</button>
                 </div>
@@ -57,17 +47,11 @@
                 <h2>Secure Sign-in</h2>
                 <label for="userId">User ID</label>
                 <input id="userId" type="text" placeholder="Enter User ID">
-
                 <label for="password">Password</label>
                 <input id="password" type="password" placeholder="Enter Password">
-
                 <button class="primary-btn" type="submit">Login</button>
                 <button class="secondary-btn" type="button" id="ssoBtn">Login with SSO</button>
-
-                <div class="loader" id="ssoLoader" hidden>
-                    <span></span><span></span><span></span>
-                    <p>Redirecting via enterprise SSO...</p>
-                </div>
+                <div class="loader" id="ssoLoader" hidden><span></span><span></span><span></span><p>Redirecting via enterprise SSO...</p></div>
             </form>
         </section>
 
@@ -83,36 +67,80 @@
 
         <section class="screen" id="dashboardScreen">
             <div class="dashboard-wrap">
-                <div class="dashboard-header">
-                    <h2>Credit Appraisal Dashboard</h2>
-                    <button class="primary-btn" id="createCamBtn">+ Create New CAM</button>
-                </div>
+                <section class="kpi-strip">
+                    <article class="kpi-card"><p class="kpi-label">CAMs in Progress</p><p class="kpi-value" data-target="12">0</p></article>
+                    <article class="kpi-card"><p class="kpi-label">Completed (This Month)</p><p class="kpi-value" data-target="28">0</p></article>
+                    <article class="kpi-card"><p class="kpi-label">Avg Turnaround Time</p><p class="kpi-value" data-target="2.4">0</p><span class="kpi-unit">days</span></article>
+                    <article class="kpi-card"><p class="kpi-label">Approval Rate</p><p class="kpi-value" data-target="78">0</p><span class="kpi-unit">%</span></article>
+                    <article class="kpi-card"><p class="kpi-label">High Risk Cases</p><p class="kpi-value" data-target="5">0</p></article>
+                </section>
 
-                <div class="panel-grid">
-                    <section class="panel">
-                        <h3>CAMs in Progress</h3>
+                <section class="workspace-grid">
+                    <div class="pipeline-panel">
+                        <h3>Active CAM Pipeline</h3>
+                        <div class="pipeline-cols">
+                            <div class="stage-col"><h4>Data Ingestion</h4>
+                                <article class="cam-card"><strong>Tata Capital Housing Finance</strong><p>Working Capital · ₹250 Cr</p><p><span class="risk medium">Medium Risk</span> · Updated 11:05</p><div class="progress"><span style="width:35%"></span></div></article>
+                            </div>
+                            <div class="stage-col"><h4>Financial Analysis</h4>
+                                <article class="cam-card"><strong>Reliance Industries Ltd</strong><p>Term Loan · ₹1,200 Cr</p><p><span class="risk low">Low Risk</span> · Updated 10:40</p><div class="progress"><span style="width:62%"></span></div></article>
+                                <article class="cam-card"><strong>Larsen &amp; Toubro Ltd</strong><p>Working Capital · ₹780 Cr</p><p><span class="risk medium">Medium Risk</span> · Updated 09:55</p><div class="progress"><span style="width:58%"></span></div></article>
+                            </div>
+                            <div class="stage-col"><h4>CAM Drafting</h4>
+                                <article class="cam-card"><strong>Tata Consultancy Services</strong><p>Term Loan · ₹540 Cr</p><p><span class="risk low">Low Risk</span> · Updated 09:15</p><div class="progress"><span style="width:74%"></span></div></article>
+                            </div>
+                            <div class="stage-col"><h4>Review / Approval</h4>
+                                <article class="cam-card"><strong>Adani Enterprises Ltd</strong><p>Term Loan · ₹990 Cr</p><p><span class="risk high">High Risk</span> · Updated 08:50</p><div class="progress"><span style="width:84%"></span></div></article>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="insights-panel">
+                        <section class="insight-card">
+                            <h4>Risk Alerts</h4>
+                            <ul>
+                                <li>⚠ High leverage detected – Adani Enterprises Ltd</li>
+                                <li>⚠ Cash flow volatility – Larsen &amp; Toubro</li>
+                                <li>⚠ GST mismatch flagged – SME case</li>
+                            </ul>
+                        </section>
+                        <section class="insight-card">
+                            <h4>AI Insights</h4>
+                            <ul>
+                                <li>💡 3 CAMs likely to be approved based on historical patterns</li>
+                                <li>💡 2 cases require additional documentation</li>
+                                <li>💡 Turnaround time improving by 12% vs last month</li>
+                            </ul>
+                        </section>
+                    </aside>
+                </section>
+
+                <section class="bottom-grid">
+                    <article class="panel">
+                        <h3>Recent CAM Activity</h3>
                         <table>
-                            <thead><tr><th>Company Name</th><th>Stage</th><th>Last updated</th></tr></thead>
+                            <thead><tr><th>Company</th><th>Stage</th><th>Analyst</th><th>Last Updated</th><th>Status</th></tr></thead>
                             <tbody>
-                            <tr><td>Reliance Retail Ltd</td><td>Financial Analysis Ongoing</td><td>Today, 11:20</td></tr>
-                            <tr><td>Tata Capital Housing Finance</td><td>Data Ingestion</td><td>Today, 10:05</td></tr>
-                            <tr><td>Larsen &amp; Toubro Ltd</td><td>CAM Drafting</td><td>Yesterday, 17:40</td></tr>
+                            <tr><td>Infosys Ltd</td><td>Approval</td><td>Neha S.</td><td>2026-03-29 11:10</td><td><span class="status approved">Approved</span></td></tr>
+                            <tr><td>ITC Ltd</td><td>Review</td><td>Arjun P.</td><td>2026-03-29 10:35</td><td><span class="status rework">Rework Required</span></td></tr>
+                            <tr><td>HDFC Bank Ltd</td><td>Drafting</td><td>Rahul K.</td><td>2026-03-29 09:55</td><td><span class="status review">Under Review</span></td></tr>
                             </tbody>
                         </table>
-                    </section>
+                    </article>
 
-                    <section class="panel">
-                        <h3>Completed / Submitted CAMs</h3>
+                    <article class="panel">
+                        <h3>My Assigned CAMs</h3>
                         <table>
-                            <thead><tr><th>Company Name</th><th>Status</th><th>Date</th></tr></thead>
+                            <thead><tr><th>Company</th><th>Priority</th><th>Stage</th><th>Due</th></tr></thead>
                             <tbody>
-                            <tr><td>Infosys Ltd</td><td><span class="status approved">Approved</span></td><td>2026-03-27</td></tr>
-                            <tr><td>HDFC Bank Ltd</td><td><span class="status review">Under Review</span></td><td>2026-03-28</td></tr>
-                            <tr><td>ITC Ltd</td><td><span class="status rework">Rework Required</span></td><td>2026-03-29</td></tr>
+                            <tr><td>Reliance Industries Ltd</td><td><span class="priority high">High</span></td><td>Financial Analysis</td><td>Today</td></tr>
+                            <tr><td>Tata Consultancy Services</td><td><span class="priority medium">Medium</span></td><td>CAM Drafting</td><td>Tomorrow</td></tr>
+                            <tr><td>Larsen &amp; Toubro Ltd</td><td><span class="priority medium">Medium</span></td><td>Review</td><td>+2 days</td></tr>
+                            <tr><td>ITC Ltd</td><td><span class="priority low">Low</span></td><td>Data Ingestion</td><td>+3 days</td></tr>
                             </tbody>
                         </table>
-                    </section>
-                </div>
+                    </article>
+                </section>
             </div>
         </section>
 
@@ -130,22 +158,14 @@
             <div class="card form-card">
                 <h2>New to Bank - Entity Details</h2>
                 <p id="sampleCompany" class="helper-text">Company: Reliance Industries Limited</p>
-
-                <label for="cin">CIN</label>
-                <input id="cin" type="text">
-
-                <label for="gstin">GSTIN</label>
-                <input id="gstin" type="text">
-
-                <label for="pan">PAN</label>
-                <input id="pan" type="text">
-
+                <label for="cin">CIN</label><input id="cin" type="text">
+                <label for="gstin">GSTIN</label><input id="gstin" type="text">
+                <label for="pan">PAN</label><input id="pan" type="text">
                 <button class="primary-btn" id="proceedCamBtn" type="button">Proceed with CAM Preparation</button>
             </div>
         </section>
     </main>
 </div>
-
 <script th:src="@{/js/landing.js}"></script>
 </body>
 </html>
