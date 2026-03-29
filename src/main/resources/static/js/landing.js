@@ -7,6 +7,9 @@ const screens = {
   newToBank: document.getElementById('newToBankScreen'),
   dataLoading: document.getElementById('dataLoadingScreen'),
   dataReveal: document.getElementById('dataRevealScreen'),
+  camGeneration: document.getElementById('camGenerationScreen'),
+  documentUpload: document.getElementById('documentUploadScreen'),
+  finalWorkspace: document.getElementById('finalCamWorkspaceScreen'),
 };
 
 const pageTitle = document.getElementById('pageTitle');
@@ -23,6 +26,9 @@ function titleFor(screenKey) {
     newToBank: 'New to Bank Intake',
     dataLoading: 'Company Data Aggregation',
     dataReveal: 'Company Data & Documents',
+    camGeneration: 'CAM Generation',
+    documentUpload: 'Additional Inputs',
+    finalWorkspace: 'Final CAM Workspace',
   };
   return titles[screenKey] || 'Credit Appraisal Dashboard';
 }
@@ -177,6 +183,65 @@ function startAggregationExperience() {
 }
 
 document.getElementById('proceedCamBtn').addEventListener('click', startAggregationExperience);
-document.getElementById('generateCamBtn').addEventListener('click', () => {
-  console.log('Generate CAM placeholder');
+const genItems = Array.from(document.querySelectorAll('.gen-item'));
+const camFinalMsg = document.getElementById('camFinalMsg');
+
+function startCamGeneration() {
+  showScreen('camGeneration');
+  camFinalMsg.classList.remove('show');
+  genItems.forEach((item, idx) => {
+    item.classList.remove('show');
+    const target = Number(item.dataset.percent || 0);
+    const status = item.querySelector('.gen-status');
+    status.textContent = '0% complete';
+    setTimeout(() => {
+      item.classList.add('show');
+      let current = 0;
+      const timer = setInterval(() => {
+        current += 5;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        status.textContent = `${current}% complete`;
+      }, 35);
+    }, idx * 220);
+  });
+
+  setTimeout(() => camFinalMsg.classList.add('show'), 3600);
+}
+
+document.getElementById('generateCamBtn').addEventListener('click', startCamGeneration);
+document.getElementById('toUploadBtn').addEventListener('click', () => showScreen('documentUpload'));
+document.getElementById('toWorkspaceBtn').addEventListener('click', () => showScreen('finalWorkspace'));
+
+document.querySelectorAll('.upload-card').forEach((card) => {
+  const fileInput = card.querySelector('input[type="file"]');
+  const uploadBtn = card.querySelector('.upload-btn');
+  const preview = card.querySelector('.file-preview');
+  const replaceBtn = card.querySelector('.replace-btn');
+  const moduleName = card.dataset.module;
+
+  function triggerUpload() {
+    fileInput.click();
+  }
+
+  uploadBtn.addEventListener('click', triggerUpload);
+  replaceBtn.addEventListener('click', triggerUpload);
+
+  fileInput.addEventListener('change', () => {
+    const fileName = fileInput.files?.[0]?.name || `${moduleName}.pdf`;
+    preview.textContent = `Uploaded: ${fileName}`;
+    replaceBtn.hidden = false;
+    card.classList.remove('success');
+    requestAnimationFrame(() => card.classList.add('success'));
+  });
+});
+
+document.querySelectorAll('.cam-nav-list li').forEach((navItem) => {
+  navItem.addEventListener('click', () => {
+    document.querySelectorAll('.cam-nav-list li').forEach((item) => item.classList.remove('active'));
+    navItem.classList.add('active');
+    document.querySelector('.doc-pane').scrollTo({ top: 0, behavior: 'smooth' });
+  });
 });
