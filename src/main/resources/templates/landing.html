@@ -7,58 +7,140 @@
     <link rel="stylesheet" th:href="@{/css/landing.css}">
 </head>
 <body>
-<div class="app-shell" id="appShell">
+<div class="app-shell">
     <header class="top-header">
-        <img th:src="@{/images/indian-bank-logo.svg}" src="/images/indian-bank-logo.svg" alt="Indian Bank Logo">
-        <span>AI-powered CAM Platform</span>
+        <span class="brand">Indian Bank</span>
     </header>
 
     <main class="screen-stack">
-        <section class="screen is-active" id="landingScreen" aria-label="Landing">
-            <div class="bg-network" aria-hidden="true"></div>
-            <div class="content-wrap">
+        <section class="screen is-active" id="landingScreen">
+            <div class="bg-network"></div>
+            <div class="landing-content">
                 <h1>Reimagining Credit Appraisal with AI</h1>
                 <p>From data ingestion to decision-ready CAMs — faster, smarter, consistent.</p>
-                <div class="feature-pills">
-                    <span>Seamless Data Ingestion</span>
-                    <span>AI Risk Analysis</span>
-                    <span>Auto CAM Drafting</span>
-                    <span>Decision Intelligence</span>
-                    <span>Workflow Governance</span>
+
+                <div class="carousel-wrap">
+                    <button class="nav-arrow" id="prevSlide" aria-label="Previous slide">‹</button>
+                    <div class="slides" id="slides">
+                        <article class="slide active">
+                            <h3>AI Data Aggregation</h3>
+                            <p>Unified ingestion from GST, banking, bureau and financial statement sources.</p>
+                        </article>
+                        <article class="slide">
+                            <h3>Financial &amp; Risk Analysis</h3>
+                            <p>Automated ratios, trend scans, anomalies and risk indicators in one view.</p>
+                        </article>
+                        <article class="slide">
+                            <h3>CAM Auto-Generation</h3>
+                            <p>Structured CAM drafts generated section-wise with policy aligned formatting.</p>
+                        </article>
+                        <article class="slide">
+                            <h3>Decision Support</h3>
+                            <p>Scorecards and recommendation insights for faster, consistent credit decisions.</p>
+                        </article>
+                        <article class="slide">
+                            <h3>Workflow &amp; Compliance</h3>
+                            <p>Maker-checker controls, audit traceability and compliance-ready checkpoints.</p>
+                        </article>
+                    </div>
+                    <button class="nav-arrow" id="nextSlide" aria-label="Next slide">›</button>
                 </div>
+                <div class="dots" id="slideDots"></div>
+
                 <button class="primary-btn" id="toLoginBtn">Take me to Login</button>
             </div>
         </section>
 
-        <section class="screen" id="loginScreen" aria-label="Login">
-            <div class="bg-particles" aria-hidden="true"></div>
-            <form class="login-card" id="loginForm">
+        <section class="screen" id="loginScreen">
+            <div class="bg-particles"></div>
+            <form class="card" id="loginForm">
                 <h2>Secure Sign-in</h2>
-                <p class="helper">Use your credentials to continue to CAM workspace.</p>
-
                 <label for="userId">User ID</label>
-                <input id="userId" name="userId" type="text" placeholder="Enter User ID" autocomplete="username">
+                <input id="userId" type="text" placeholder="Enter User ID">
 
                 <label for="password">Password</label>
-                <input id="password" name="password" type="password" placeholder="Enter Password" autocomplete="current-password">
+                <input id="password" type="password" placeholder="Enter Password">
 
-                <button type="submit" class="primary-btn">Login</button>
-                <button type="button" class="secondary-btn" id="ssoBtn">Login with SSO</button>
+                <button class="primary-btn" type="submit">Login</button>
+                <button class="secondary-btn" type="button" id="ssoBtn">Login with SSO</button>
 
                 <div class="loader" id="ssoLoader" hidden>
                     <span></span><span></span><span></span>
-                    <p>Redirecting to enterprise SSO...</p>
+                    <p>Redirecting via enterprise SSO...</p>
                 </div>
             </form>
         </section>
 
-        <section class="screen" id="welcomeScreen" aria-label="Welcome">
-            <div class="bg-network faint" aria-hidden="true"></div>
-            <div class="welcome-card">
+        <section class="screen" id="welcomeScreen">
+            <div class="bg-network faint"></div>
+            <div class="card welcome-card">
                 <div class="checkmark">✓</div>
-                <h2 id="welcomeHeading">Welcome, User</h2>
+                <h2 id="welcomeText">Welcome, User</h2>
                 <p>Role: Credit Officer</p>
-                <button class="primary-btn" id="proceedBtn">Proceed</button>
+                <button class="primary-btn" id="toDashboardBtn">Proceed</button>
+            </div>
+        </section>
+
+        <section class="screen" id="dashboardScreen">
+            <div class="dashboard-wrap">
+                <div class="dashboard-header">
+                    <h2>Credit Appraisal Dashboard</h2>
+                    <button class="primary-btn" id="createCamBtn">+ Create New CAM</button>
+                </div>
+
+                <div class="panel-grid">
+                    <section class="panel">
+                        <h3>CAMs in Progress</h3>
+                        <table>
+                            <thead><tr><th>Company Name</th><th>Stage</th><th>Last updated</th></tr></thead>
+                            <tbody>
+                            <tr><td>Reliance Retail Ltd</td><td>Financial Analysis Ongoing</td><td>Today, 11:20</td></tr>
+                            <tr><td>Tata Capital Housing Finance</td><td>Data Ingestion</td><td>Today, 10:05</td></tr>
+                            <tr><td>Larsen &amp; Toubro Ltd</td><td>CAM Drafting</td><td>Yesterday, 17:40</td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section class="panel">
+                        <h3>Completed / Submitted CAMs</h3>
+                        <table>
+                            <thead><tr><th>Company Name</th><th>Status</th><th>Date</th></tr></thead>
+                            <tbody>
+                            <tr><td>Infosys Ltd</td><td><span class="status approved">Approved</span></td><td>2026-03-27</td></tr>
+                            <tr><td>HDFC Bank Ltd</td><td><span class="status review">Under Review</span></td><td>2026-03-28</td></tr>
+                            <tr><td>ITC Ltd</td><td><span class="status rework">Rework Required</span></td><td>2026-03-29</td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="screen" id="camSelectionScreen">
+            <div class="selection-wrap">
+                <h2>Select CAM Journey</h2>
+                <div class="option-grid">
+                    <button class="option-card" id="newToBankBtn">New to Bank</button>
+                    <button class="option-card" id="existingToBankBtn">Existing to Bank</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="screen" id="newToBankScreen">
+            <div class="card form-card">
+                <h2>New to Bank - Entity Details</h2>
+                <p id="sampleCompany" class="helper-text">Company: Reliance Industries Limited</p>
+
+                <label for="cin">CIN</label>
+                <input id="cin" type="text">
+
+                <label for="gstin">GSTIN</label>
+                <input id="gstin" type="text">
+
+                <label for="pan">PAN</label>
+                <input id="pan" type="text">
+
+                <button class="primary-btn" id="proceedCamBtn" type="button">Proceed with CAM Preparation</button>
             </div>
         </section>
     </main>

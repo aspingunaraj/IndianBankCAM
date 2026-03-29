@@ -42,4 +42,25 @@ class LoginControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("landing"));
     }
+
+    @Test
+    void shouldRenderLandingForDashboardRoute() throws Exception {
+        mockMvc.perform(get("/dashboard"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("landing"));
+    }
+
+    @Test
+    void shouldRenderLandingForCreateCamRoute() throws Exception {
+        mockMvc.perform(get("/create-cam"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("landing"));
+    }
+
+    @Test
+    void shouldRenderLandingForNewToBankRoute() throws Exception {
+        mockMvc.perform(get("/new-to-bank"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("landing"));
+    }
 }
