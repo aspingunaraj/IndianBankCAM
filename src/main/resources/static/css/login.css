@@ -1,0 +1,132 @@
+:root {
+    color-scheme: light;
+    --bg-main: #f4f8ff;
+    --bg-card: #ffffff;
+    --text-main: #1d2a3b;
+    --accent: #005baa;
+    --accent-dark: #00427d;
+    --error: #c62828;
+    --success: #216e39;
+    --border: #d8e2f1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(160deg, #ebf3ff 0%, var(--bg-main) 45%, #eef7ff 100%);
+    color: var(--text-main);
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 2rem 1rem;
+}
+
+.login-card {
+    width: min(100%, 460px);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 18px 44px rgba(29, 42, 59, 0.15);
+    padding: 2rem;
+}
+
+.brand-block {
+    margin-bottom: 1.5rem;
+}
+
+.bank-name {
+    margin: 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4d5c70;
+    font-weight: 600;
+}
+
+h1 {
+    margin: 0.25rem 0 0.5rem;
+    font-size: 1.5rem;
+    color: #092b57;
+}
+
+.subtitle {
+    margin: 0;
+    color: #596b83;
+    font-size: 0.95rem;
+}
+
+label {
+    display: block;
+    margin: 1rem 0 0.35rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #b9c8dc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+input:focus {
+    border-color: var(--accent);
+    outline: 3px solid rgba(0, 91, 170, 0.18);
+}
+
+button {
+    margin-top: 1.25rem;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    background-color: var(--accent);
+    color: #fff;
+    font-size: 0.98rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--accent-dark);
+}
+
+.message {
+    border-radius: 8px;
+    padding: 0.7rem 0.85rem;
+    margin-top: 1rem;
+    font-size: 0.92rem;
+}
+
+.message.error {
+    background-color: #fdeaea;
+    color: var(--error);
+    border: 1px solid #f7c4c4;
+}
+
+.message.success {
+    background-color: #eaf8ee;
+    color: var(--success);
+    border: 1px solid #b7e2c3;
+}
+
+.field-error {
+    margin: 0.3rem 0 0;
+    font-size: 0.85rem;
+    color: var(--error);
+}
+
+.help-text {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #6c7e95;
+}
