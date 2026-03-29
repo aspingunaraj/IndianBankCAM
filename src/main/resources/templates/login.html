@@ -7,31 +7,42 @@
     <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body>
-<div class="page-wrapper">
-    <div class="login-card">
-        <div class="brand-block">
-            <p class="bank-name">Indian Bank</p>
-            <h1>AI-assisted CAM Portal</h1>
-            <p class="subtitle">Credit Appraisal Memo Preparation Workspace</p>
-        </div>
+<div th:replace="~{fragments/header :: brandHeader}"></div>
+
+<main class="portal-shell">
+    <section class="panel marketing-panel">
+        <p class="eyebrow">Credit Monitoring Department</p>
+        <h1>AI-powered CAM preparation portal</h1>
+        <p>Create, validate, and review appraisal memos faster with intelligent suggestions and standardized workflows.</p>
+        <ul>
+            <li>Borrower data prefill and validation checks</li>
+            <li>Policy aligned CAM structure guidance</li>
+            <li>Audit-ready collaboration trail</li>
+        </ul>
+    </section>
+
+    <section class="panel auth-panel">
+        <h2>Sign in</h2>
+        <p class="subcopy">Use your Indian Bank credentials or continue with SSO.</p>
 
         <div class="message error" th:if="${errorMessage}" th:text="${errorMessage}"></div>
         <div class="message success" th:if="${successMessage}" th:text="${successMessage}"></div>
 
         <form th:action="@{/login}" th:object="${loginForm}" method="post" novalidate>
             <label for="userId">User ID</label>
-            <input id="userId" type="text" th:field="*{userId}" placeholder="Enter your employee/user ID" autocomplete="username">
+            <input id="userId" type="text" th:field="*{userId}" placeholder="Enter employee/user ID" autocomplete="username">
             <p class="field-error" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
 
             <label for="password">Password</label>
             <input id="password" type="password" th:field="*{password}" placeholder="Enter password" autocomplete="current-password">
             <p class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
 
-            <button type="submit">Sign in to CAM Portal</button>
+            <button type="submit">Sign in</button>
         </form>
 
-        <p class="help-text">Demo screen for phase-1 onboarding. Authentication integration can be added in the next step.</p>
-    </div>
-</div>
+        <div class="divider"><span>or</span></div>
+        <a class="sso-btn" th:href="@{/sso/login}">Continue with Corporate SSO</a>
+    </section>
+</main>
 </body>
 </html>

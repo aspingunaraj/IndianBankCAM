@@ -33,4 +33,22 @@ class LoginControllerTest {
                 .andExpect(view().name("login"))
                 .andExpect(model().attributeExists("errorMessage"));
     }
+
+    @Test
+    void shouldAllowValidCredentialsToHome() throws Exception {
+        mockMvc.perform(post("/login")
+                        .param("userId", "cam.user")
+                        .param("password", "demoPassword"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("home"))
+                .andExpect(model().attributeExists("userId"));
+    }
+
+    @Test
+    void shouldOfferSsoFlow() throws Exception {
+        mockMvc.perform(get("/sso/login"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("login"))
+                .andExpect(model().attributeExists("successMessage"));
+    }
 }
